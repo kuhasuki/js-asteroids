@@ -58,10 +58,28 @@ function curriedSum(numArgs) {
       });
       return totalSum;
     } else {
-      return this
+      return _curriedSum;
     }
   }
   return _curriedSum
 }
 
-var curryIt = curriedSum(5);
+// var notSum = curriedSum(4);
+// console.log(notSum(5)(30)(20)(1)); // => 56
+
+Function.prototype.curry = function (numArgs) {
+  var argsContainer = [];
+  var meIs = this;
+  var _curried = function (arg) {
+    argsContainer.push(arg);
+
+    if (argsContainer.length === numArgs) {
+      return meIs.apply(null, argsContainer);
+    } else {
+      return _curried;
+    }
+  }
+  return _curried;
+}
+
+console.log(sum.curry(3)(2)(3)(4));
