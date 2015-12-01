@@ -15,10 +15,10 @@
   }
 
   Asteroids.Util.randomVec = function () {
-    var xComponent = Math.round(Math.random());
-    var yComponent = Math.round(Math.random());
-    var xRand = Math.floor(Math.random() * 10) + 1;
-    var yRand = Math.floor(Math.random() * 10) + 1;
+    var xComponent = Math.round(Math.random()) === 1 ? 1 : -1;
+    var yComponent = Math.round(Math.random()) === 1 ? 1 : -1;
+    var xRand = Math.floor(Math.random() * 3) + 1;
+    var yRand = Math.floor(Math.random() * 3) + 1;
     return [xComponent * xRand, yComponent * yRand];
   }
 }());

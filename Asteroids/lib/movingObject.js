@@ -4,15 +4,16 @@
     window.Asteroids = {};
   }
 
-  var MovingObject = Asteroids.MovingObject = function (pos, vel, radius, color) {
+  var MovingObject = Asteroids.MovingObject = function (pos, vel, radius, color, game) {
     this.pos = pos;
     this.vel = vel;
     this.radius = radius;
     this.color = color;
+    this.game = game;
   }
 
   MovingObject.prototype.draw = function (ctx) {
-    ctx.fillStyle = this.color;
+    ctx.strokeStyle = this.color;
     ctx.beginPath();
 
     ctx.arc(
@@ -23,13 +24,16 @@
       2 * Math.PI,
       false
     );
+    ctx.lineWidth = 5;
 
     ctx.stroke();
   }
 
   MovingObject.prototype.move = function () {
+    var game = this.game;
     this.pos[0] += this.vel[0];
     this.pos[1] += this.vel[1];
+    this.pos = game.wrap(game.pos);
   }
 
 }());

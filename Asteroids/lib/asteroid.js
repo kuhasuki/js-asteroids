@@ -12,9 +12,9 @@
   }
 
   Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
-console.log(Asteroid.prototype.constructor);
-var paul = new Asteroid([15, 12]);
-console.log(paul);
+// console.log(Asteroid.prototype.constructor);
+// var paul = new Asteroid([15, 12]);
+// console.log(paul);
 
 
 }());

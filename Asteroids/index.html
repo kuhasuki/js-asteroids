@@ -5,25 +5,29 @@
     <title>iiiASSTEROIDS!!!</title>
   </head>
   <body>
-    <h1>Hi</h1>
-    <canvas style="background-color:#000000"></canvas>
+    <canvas style="background-color:black"></canvas>
     <script type="text/javascript" src="lib/movingObject.js"></script>
     <script type="text/javascript" src="lib/utils.js"></script>
     <script type="text/javascript" src="lib/asteroid.js"></script>
     <script type="text/javascript" src="lib/game.js"></script>
+    <script type="text/javascript" src="lib/gameView.js"></script>
     <script>
       var outerSpace = document.getElementsByTagName("canvas")[0];
       var ctx = outerSpace.getContext('2d');
       outerSpace.height = window.innerHeight;
       outerSpace.width = window.innerWidth;
+      var game = new Asteroids.Game(
+        outerSpace.width,
+        outerSpace.height,
+        34
+      );
+      var gameView = new Asteroids.GameView(game, ctx);
+      gameView.start();
+      // firstMovObj = new Asteroids.MovingObject([10,10], [50,30], 5, "#CCCCCC");
+      // firstMovObj.draw(ctx);
+      // firstMovObj.move();
 
-      firstMovObj = new Asteroids.MovingObject([10,10], [50,30], 5, "#CCCCCC");
-      firstMovObj.draw(ctx);
-      firstMovObj.move();
-      // new Asteroids.Game(
-      //   outerSpace.width,
-      //   outerSpace.height
-      // ).start(outerSpace);
+
     </script>
   </body>
 </html>

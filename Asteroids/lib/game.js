@@ -27,14 +27,33 @@
   }
 
   Game.prototype.draw = function(ctx) {
-
+    ctx.clearRect( 0, 0, this.DIM_X, this.DIM_Y);
+    this.asteroids.forEach(function(asteroid){
+      asteroid.draw(ctx);
+    });
   }
 
   Game.prototype.moveObjects = function() {
+    this.asteroids.forEach(function(asteroid){
+      asteroid.move();
+    });
+  }
 
+  Game.prototype.wrap = function (pos) {
+
+      if (pos[0] > this.DIM_X) {
+        pos[0] = 0;
+      } else if (pos[0] < 0) {
+        pos[0] = this.DIM_X;
+      } else if (pos[1] > this.DIM_Y) {
+        pos[1] = 0;
+      } else if (pos[1] < 0) {
+        pos[1] = this.DIM_Y;
+      }
+    return pos;
   }
 
 }());
 
-var franquist = new Asteroids.Game(40,40,3);
-console.log(franquist);
+// var franquist = new Asteroids.Game(40,40,3);
+// console.log(franquist);
