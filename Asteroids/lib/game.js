@@ -14,9 +14,8 @@
   }
 
   Game.prototype.addAsteroids = function() {
-    var thisWeNeed = this;
-    for (var i = 0; i < thisWeNeed.NUM_ASTEROIDS; i++){
-      thisWeNeed.asteroids.push(new Asteroids.Asteroid(thisWeNeed.randomPosition()));
+    for (var i = 0; i < this.NUM_ASTEROIDS; i++){
+      this.asteroids.push(new Asteroids.Asteroid(this.randomPosition(), this));
     }
   }
 
@@ -41,14 +40,14 @@
 
   Game.prototype.wrap = function (pos) {
 
-      if (pos[0] > this.DIM_X) {
-        pos[0] = 0;
-      } else if (pos[0] < 0) {
-        pos[0] = this.DIM_X;
-      } else if (pos[1] > this.DIM_Y) {
-        pos[1] = 0;
-      } else if (pos[1] < 0) {
-        pos[1] = this.DIM_Y;
+      if ((pos[0] - 50) > this.DIM_X) {
+        pos[0] = 0 - 50;
+      } else if ((pos[0] + 50) < 0) {
+        pos[0] = this.DIM_X + 50;
+      } else if ((pos[1] - 50) > this.DIM_Y) {
+        pos[1] = 0 - 50;
+      } else if ((pos[1] + 50) < 0) {
+        pos[1] = this.DIM_Y + 50;
       }
     return pos;
   }

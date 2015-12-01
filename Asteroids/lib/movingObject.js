@@ -30,10 +30,9 @@
   }
 
   MovingObject.prototype.move = function () {
-    var game = this.game;
     this.pos[0] += this.vel[0];
     this.pos[1] += this.vel[1];
-    this.pos = game.wrap(game.pos);
+    this.pos = this.game.wrap(this.pos);
   }
 
 }());

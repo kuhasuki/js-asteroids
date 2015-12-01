@@ -7,8 +7,8 @@
   var DEFCOLOR = "#00CCFF"
   var DEFRADIUS = 50;
 
-  var Asteroid = Asteroids.Asteroid = function (pos) {
-    Asteroids.MovingObject.call(this, pos, Asteroids.Util.randomVec(), DEFRADIUS,DEFCOLOR );
+  var Asteroid = Asteroids.Asteroid = function (pos, game) {
+    Asteroids.MovingObject.call(this, pos, Asteroids.Util.randomVec(), DEFRADIUS,DEFCOLOR, game );
   }
 
   Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
